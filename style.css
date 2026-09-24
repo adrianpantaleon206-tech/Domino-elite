@@ -1,0 +1,83 @@
+/* Custom CSS Styles para Domino Elite */
+
+/* Navegación Principal */
+.nav-btn {
+  padding: 0.5rem 0.85rem;
+  border-radius: 0.75rem;
+  color: #94a3b8;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  color: #f59e0b;
+  background-color: rgba(245, 158, 11, 0.05);
+}
+
+.nav-btn.active {
+  color: #f59e0b;
+  background-color: rgba(245, 158, 11, 0.1);
+  font-weight: 700;
+}
+
+/* Subnavegación Paginada (Tabs) */
+.subnav-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+  color: #94a3b8;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: inline-flex;
+  items-center: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.subnav-btn:hover {
+  border-color: #f59e0b;
+  color: #ffffff;
+}
+
+.subnav-btn.active {
+  background-color: #f59e0b;
+  color: #020617;
+  border-color: #f59e0b;
+  font-weight: 800;
+}
+
+/* Botones de Menú Móvil */
+.mobile-nav-btn {
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  color: #cbd5e1;
+  font-size: 0.875rem;
+  transition: background-color 0.2s;
+}
+
+.mobile-nav-btn:hover {
+  background-color: #1e293b;
+  color: #f59e0b;
+}
+
+/* Personalización de Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
+}

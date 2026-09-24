@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Domino Elite - Academia & Vlog Oficial</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Configuración Personalizada de Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              gold: '#F59E0B',
+              goldHover: '#D97706',
+              neon: '#10B981',
+              dark: '#0B0F19',
+              card: '#111827',
+              accent: '#3B82F6',
+              cyan: '#06B6D4'
+            }
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            mono: ['Space Grotesk', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- CSS Personalizado -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans selection:bg-amber-500 selection:text-black">
+
+  <!-- BARRA DE NAVEGACIÓN -->
+  <header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-amber-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('que-es')">
+        <div class="w-11 h-11 bg-gradient-to-tr from-amber-500 to-emerald-400 rounded-xl flex items-center justify-center text-slate-950 font-black shadow-lg shadow-amber-500/20">
+          <i class="fa-solid fa-dice-five text-2xl"></i>
+        </div>
+        <div>
+          <span class="text-2xl font-extrabold tracking-wider bg-gradient-to-r from-amber-400 via-amber-200 to-emerald-400 bg-clip-text text-transparent">DOMINO ELITE</span>
+          <span class="block text-xs text-slate-400 font-mono tracking-widest uppercase">Team Miranda • Venezuela</span>
+        </div>
+      </div>
+
+      <!-- Menú Desktop -->
+      <nav class="hidden lg:flex items-center space-x-1 font-medium text-sm">
+        <button onclick="switchTab('que-es')" id="nav-que-es" class="nav-btn active">1. ¿Qué es?</button>
+        <button onclick="switchTab('historia')" id="nav-historia" class="nav-btn">2. Historia & FVD</button>
+        <button onclick="switchTab('beneficios')" id="nav-beneficios" class="nav-btn">3. Beneficios</button>
+        <button onclick="switchTab('campeones')" id="nav-campeones" class="nav-btn">4. Campeones</button>
+        <button onclick="switchTab('clases')" id="nav-clases" class="nav-btn bg-amber-500/10 text-amber-400 border border-amber-500/30 hover:bg-amber-500 hover:text-slate-950 transition-all font-semibold">
+          <i class="fa-solid fa-graduation-cap mr-1"></i> 5. Clases Online
+        </button>
+      </nav>
+
+      <!-- Botón WhatsApp Rápido & Menú Mobile -->
+      <div class="flex items-center space-x-3">
+        <a href="https://wa.me/584143724113" target="_blank" class="hidden sm:flex items-center space-x-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-4 py-2.5 rounded-xl transition shadow-lg shadow-emerald-500/20 text-xs uppercase tracking-wider">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>Contacto Directo</span>
+        </a>
+
+        <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-300 hover:text-amber-400 text-2xl focus:outline-none">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú Mobile Dropdown -->
+    <div id="mobile-menu" class="hidden lg:hidden border-b border-slate-800 bg-slate-900/95 backdrop-blur-xl px-4 py-4 space-y-2">
+      <button onclick="switchTab('que-es')" class="mobile-nav-btn">1. ¿Qué es el Dominó?</button>
+      <button onclick="switchTab('historia')" class="mobile-nav-btn">2. Historia & Reglas FVD/FID</button>
+      <button onclick="switchTab('beneficios')" class="mobile-nav-btn">3. Beneficios Cognitivos</button>
+      <button onclick="switchTab('campeones')" class="mobile-nav-btn">4. Campeones Mundiales</button>
+      <button onclick="switchTab('clases')" class="mobile-nav-btn text-amber-400 font-bold">5. Clases con Adrián Pantaleón</button>
+    </div>
+  </header>
+
+  <!-- HERO BANNER PRINCIPAL -->
+  <section class="relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-12 md:py-16 border-b border-slate-800">
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold uppercase tracking-widest">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+            <span>Vlog & Academia Profesional de Dominó</span>
+          </div>
+          
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
+            El Arte del Dominó Estratégico <span class="bg-gradient-to-r from-amber-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent">de Alto Nivel</span>
+          </h1>
+          
+          <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0">
+            Aprende la ciencia de la probabilidad, lectura de jugadas y comunicación en pareja con el Entrenador Certificado <strong class="text-white">Adrián Pantaleón</strong> y el legendario <strong class="text-amber-400">Team Miranda</strong>.
+          </p>
+
+          <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-2">
+            <button onclick="switchTab('clases')" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black px-6 py-3.5 rounded-xl shadow-xl shadow-amber-500/20 transition transform hover:-translate-y-0.5 flex items-center space-x-2">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <span>Ver Curso Online (5 Niveles)</span>
+            </button>
+            <button onclick="switchTab('campeones')" class="bg-slate-800 hover:bg-slate-700 text-white font-bold px-6 py-3.5 rounded-xl border border-slate-700 transition flex items-center space-x-2">
+              <i class="fa-solid fa-trophy text-amber-400"></i>
+              <span>Campeones Mundiales</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tarjeta de Resumen / Muestra Visual -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="w-full max-w-md bg-slate-900/90 border border-slate-700/60 rounded-2xl p-6 shadow-2xl relative group hover:border-amber-500/50 transition duration-300">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+              <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 rounded-full bg-slate-800 border-2 border-amber-400 flex items-center justify-center text-amber-400 font-bold text-lg">
+                  AP
+                </div>
+                <div>
+                  <h3 class="font-bold text-white text-base">Adrián Pantaleón</h3>
+                  <p class="text-xs text-amber-400 font-medium">Entrenador & Campeón Nacional</p>
+                </div>
+              </div>
+              <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full font-mono border border-emerald-500/30">19 Años</span>
+            </div>
+
+            <div class="py-4 space-y-3">
+              <div class="flex items-center justify-between text-xs bg-slate-800/60 p-2.5 rounded-lg border border-slate-700/50">
+                <span class="text-slate-400"><i class="fa-solid fa-medal text-amber-400 mr-2"></i>Sub-15 Valencia 2021:</span>
+                <span class="text-emerald-400 font-bold font-mono">Campeón Invicto 7/7</span>
+              </div>
+              <div class="flex items-center justify-between text-xs bg-slate-800/60 p-2.5 rounded-lg border border-slate-700/50">
+                <span class="text-slate-400"><i class="fa-solid fa-trophy text-amber-400 mr-2"></i>Sub-18 Maracay 2022:</span>
+                <span class="text-emerald-400 font-bold font-mono">Campeón (6 victorias)</span>
+              </div>
+              <div class="flex items-center justify-between text-xs bg-slate-800/60 p-2.5 rounded-lg border border-slate-700/50">
+                <span class="text-slate-400"><i class="fa-solid fa-users text-amber-400 mr-2"></i>Equipo Oficial:</span>
+                <span class="text-amber-300 font-bold">Team Miranda 🇻🇪</span>
+              </div>
+            </div>
+
+            <div class="pt-2 flex items-center justify-between text-xs font-mono text-slate-400 border-t border-slate-800">
+              <span><i class="fa-solid fa-phone text-emerald-400 mr-1"></i> 0414-3724113</span>
+              <button onclick="toggleModal('score-calculator')" class="text-amber-400 hover:text-amber-300 underline font-sans">
+                <i class="fa-solid fa-calculator mr-1"></i> Anotador Digital
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVEGACIÓN SECUNDARIA POR CATALOGOS (PAGINACIÓN / TABS) -->
+  <div class="bg-slate-900 border-b border-slate-800 py-3 sticky top-20 z-40">
+    <div class="max-w-7xl mx-auto px-4 overflow-x-auto">
+      <div class="flex space-x-2 min-w-max">
+        <button onclick="switchTab('que-es')" id="subnav-que-es" class="subnav-btn active">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>1. ¿Qué es el Dominó?</span>
+        </button>
+        <button onclick="switchTab('historia')" id="subnav-historia" class="subnav-btn">
+          <i class="fa-solid fa-book-open"></i>
+          <span>2. Historia & Reglas FVD/FID</span>
+        </button>
+        <button onclick="switchTab('beneficios')" id="subnav-beneficios" class="subnav-btn">
+          <i class="fa-solid fa-brain"></i>
+          <span>3. Beneficios Cognitivos</span>
+        </button>
+        <button onclick="switchTab('campeones')" id="subnav-campeones" class="subnav-btn">
+          <i class="fa-solid fa-trophy"></i>
+          <span>4. Campeones Mundiales</span>
+        </button>
+        <button onclick="switchTab('clases')" id="subnav-clases" class="subnav-btn">
+          <i class="fa-solid fa-chalkboard-user"></i>
+          <span>5. Curso Online (5 Niveles)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENEDOR PRINCIPAL DE CONTENIDO (CATÁLOGOS) -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+    <!-- CATALOGO 1: ¿QUÉ ES EL DOMINÓ? -->
+    <section id="tab-que-es" class="tab-content space-y-10">
+      <div class="border-l-4 border-amber-500 pl-4">
+        <h2 class="text-3xl font-extrabold text-white">1. ¿Qué es el Dominó?</h2>
+        <p class="text-slate-400 mt-1">Definición, lógica táctica de parejas y modalidad oficial internacional.</p>
+      </div>
+
+      <!-- Tarjeta Informativa Principal -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl space-y-4">
+          <div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center text-amber-400 text-2xl">
+            <i class="fa-solid fa-chess"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white">Deporte Mental y Estrategia Táctica</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            El dominó es un deporte de la mente clasificado internacionalmente dentro de los juegos de mesa estratégicos. Se juega con 28 fichas rectangulares (en su modalidad clásica de **Doble Seis**) que van desde el doble blanco (0-0) hasta el doble seis (6-6).
+          </p>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            A nivel competitivo, se disputa en equipos de 2 personas (parejas) donde no existe la comunicación verbal ni señas, por lo cual **cada ficha jugada es un mensaje en código implícito** para el compañero sobre la mano que posee.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl space-y-4">
+          <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-400 text-2xl">
+            <i class="fa-solid fa-border-all"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white">Conceptos Clave de la Mesa</h3>
+          <ul class="space-y-3 text-sm text-slate-300">
+            <li class="flex items-start">
+              <i class="fa-solid fa-check text-emerald-400 mt-1 mr-2"></i>
+              <span><strong>El Sorteo Inicial:</strong> Las 28 fichas se voltean boca abajo y cada uno de los 4 jugadores roba 7 fichas.</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa-solid fa-check text-emerald-400 mt-1 mr-2"></i>
+              <span><strong>La Salida:</strong> En el reglamento oficial, se hace un sorteo previo de ficha para definir el jugador que sale y este puede salir con CUALQUIER ficha de su mano.</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa-solid fa-check text-emerald-400 mt-1 mr-2"></i>
+              <span><strong>El Tranque o Cierre:</strong> Ocurre cuando ningún jugador tiene ficha jugable para las dos puntas abiertas. Se cuentan los puntos de cada pareja y gana la de menor puntuación.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Representación Gráfica Interactiva de Fichas -->
+      <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 p-6 rounded-2xl border border-slate-700">
+        <h4 class="text-center text-amber-400 font-bold uppercase tracking-wider text-sm mb-6">Demostración Visual de Fichas Clave</h4>
+        <div class="flex flex-wrap justify-center gap-6">
+          
+          <!-- Ficha Doble Seis -->
+          <div class="bg-slate-100 text-slate-950 p-3 rounded-lg font-bold flex flex-col items-center shadow-lg w-16 border-2 border-amber-400">
+            <span class="text-lg">6</span>
+            <hr class="w-full border-slate-400 my-1">
+            <span class="text-lg">6</span>
+          </div>
+
+          <!-- Ficha Blanco Doble -->
+          <div class="bg-slate-100 text-slate-950 p-3 rounded-lg font-bold flex flex-col items-center shadow-lg w-16 border-2 border-slate-300">
+            <span class="text-lg">0</span>
+            <hr class="w-full border-slate-400 my-1">
+            <span class="text-lg">0</span>
+          </div>
+
+          <!-- Ficha 6-5 -->
+          <div class="bg-slate-100 text-slate-950 p-3 rounded-lg font-bold flex flex-col items-center shadow-lg w-16 border-2 border-slate-300">
+            <span class="text-lg">6</span>
+            <hr class="w-full border-slate-400 my-1">
+            <span class="text-lg">5</span>
+          </div>
+
+          <!-- Ficha 4-3 -->
+          <div class="bg-slate-100 text-slate-950 p-3 rounded-lg font-bold flex flex-col items-center shadow-lg w-16 border-2 border-slate-300">
+            <span class="text-lg">4</span>
+            <hr class="w-full border-slate-400 my-1">
+            <span class="text-lg">3</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CATALOGO 2: HISTORIA & REGLAMENTOS OFICIALES FVD/FID -->
+    <section id="tab-historia" class="tab-content hidden space-y-10">
+      <div class="border-l-4 border-emerald-500 pl-4">
+        <h2 class="text-3xl font-extrabold text-white">2. Historia & Reglamentos FVD / FID</h2>
+        <p class="text-slate-400 mt-1">Origen del juego, Federación Venezolana de Dominó y normas internacionales.</p>
+      </div>
+
+      <!-- REGLA OFICIAL DESTACADA -->
+      <div class="bg-gradient-to-r from-red-900/40 via-amber-900/30 to-slate-900 border-2 border-amber-500/50 p-6 rounded-2xl relative">
+        <div class="flex items-start space-x-4">
+          <div class="text-amber-400 text-3xl pt-1"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="space-y-2">
+            <h3 class="text-xl font-bold text-amber-300">Aclaratoria de Regla Oficial FVD y FID (Salida de Ficha)</h3>
+            <p class="text-slate-200 text-sm leading-relaxed">
+              <strong>¡Atención! En el dominó competitivo oficial (FVD - Federación Venezolana de Dominó y FID - Federación Internacional de Dominó): NO SE SALE OBLIGATORIAMENTE CON EL DOBLE SEIS (6-6).</strong>
+            </p>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Al inicio de la primera mano de un juego, se realiza un <strong>sorteo de fichas</strong> previo entre los 4 jugadores para determinar quién obtiene la primera salida. El jugador favorecido en el sorteo <u>tiene el derecho libre de salir con la ficha que considere más conveniente</u> de sus 7 fichas (sea doble o ficha mixta). En manos subsecuentes, la salida rota hacia la derecha.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- LÍNEA DE TIEMPO HISTÓRICA -->
+      <div class="space-y-6">
+        <h3 class="text-2xl font-bold text-white flex items-center">
+          <i class="fa-solid fa-clock-rotate-left text-emerald-400 mr-3"></i> Evolución Histórica
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-slate-900 p-6 rounded-xl border border-slate-800 space-y-2">
+            <span class="text-amber-400 font-mono text-xs font-bold uppercase">Año 1120 d.C.</span>
+            <h4 class="text-lg font-bold text-white">Origen Chino</h4>
+            <p class="text-slate-400 text-xs">Aparición de las primeras placas óseas de hueso y marfil presentadas al Emperador Hui Tsung en China.</p>
+          </div>
+
+          <div class="bg-slate-900 p-6 rounded-xl border border-slate-800 space-y-2">
+            <span class="text-amber-400 font-mono text-xs font-bold uppercase">Siglo XVIII</span>
+            <h4 class="text-lg font-bold text-white">Llegada a Italia y Europa</h4>
+            <p class="text-slate-400 text-xs">Introducido en Venecia y Nápoles. Se rebautiza como "Dominó" en Francia por los capuchones negros de los sacerdotes.</p>
+          </div>
+
+          <div class="bg-slate-900 p-6 rounded-xl border border-slate-800 space-y-2">
+            <span class="text-emerald-400 font-mono text-xs font-bold uppercase">Siglo XXI</span>
+            <h4 class="text-lg font-bold text-white">Dominó Profesional (FVD / FID)</h4>
+            <p class="text-slate-400 text-xs">Consolidación en América Latina. Venezuela se convierte en una potencia mundial indiscutible en este deporte.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATALOGO 3: BENEFICIOS COGNITIVOS -->
+    <section id="tab-beneficios" class="tab-content hidden space-y-10">
+      <div class="border-l-4 border-cyan-500 pl-4">
+        <h2 class="text-3xl font-extrabold text-white">3. Beneficios Cognitivos del Dominó</h2>
+        <p class="text-slate-400 mt-1">Impacto positivo en el cerebro, el cálculo matemático y la toma de decisiones.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <div class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl hover:border-cyan-500/50 transition">
+          <div class="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center text-cyan-400 text-2xl mb-4">
+            <i class="fa-solid fa-calculator"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Cálculo de Probabilidades</h3>
+          <p class="text-slate-400 text-sm">Desarrolla la agilidad mental para calcular rápidamente las fichas faltantes de un palo en tiempo real.</p>
+        </div>
+
+        <div class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl hover:border-cyan-500/50 transition">
+          <div class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center text-purple-400 text-2xl mb-4">
+            <i class="fa-solid fa-brain"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Memoria de Trabajo Activa</h3>
+          <p class="text-slate-400 text-sm">Ejercita la retención de las jugadas realizadas por los 4 participantes para deducir las manos ocultas.</p>
+        </div>
+
+        <div class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl hover:border-cyan-500/50 transition">
+          <div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center text-amber-400 text-2xl mb-4">
+            <i class="fa-solid fa-handshake"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Sincronización en Pareja</h3>
+          <p class="text-slate-400 text-sm">Enseña a subordinar el juego personal en favor de la estrategia y victoria del compañero de equipo.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CATALOGO 4: CAMPEONES MUNDIALES & TEAM MIRANDA -->
+    <section id="tab-campeones" class="tab-content hidden space-y-10">
+      <div class="border-l-4 border-amber-500 pl-4">
+        <h2 class="text-3xl font-extrabold text-white">4. Campeones Mundiales de Dominó</h2>
+        <p class="text-slate-400 mt-1">Grandes leyendas internacionales y la plantilla oficial de nuestro <strong>Team Miranda 🇻🇪</strong>.</p>
+      </div>
+
+      <!-- SECCIÓN DESTACADA ESPECIAL: TEAM MIRANDA -->
+      <div class="bg-gradient-to-br from-amber-950/40 via-slate-900 to-slate-950 border-2 border-amber-500/40 p-6 md:p-8 rounded-3xl space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-amber-500/20 pb-4">
+          <div class="flex items-center space-x-3">
+            <span class="text-3xl">🇻🇪</span>
+            <div>
+              <h3 class="text-2xl font-extrabold text-white">NUESTRO EQUIPO: TEAM MIRANDA</h3>
+              <p class="text-amber-400 text-xs font-mono">Competidores de Élite Mundial & Entrenadores</p>
+            </div>
+          </div>
+          <span class="bg-amber-500 text-slate-950 font-black px-4 py-1.5 rounded-full text-xs uppercase tracking-wider">Plantilla Oficial</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Luis Alberto Marquina -->
+          <div class="bg-slate-900/90 border border-amber-500/30 p-5 rounded-2xl space-y-3">
+            <div class="flex justify-between items-start">
+              <span class="text-3xl">🥇</span>
+              <span class="bg-amber-500/20 text-amber-300 text-xs font-mono font-bold px-2 py-1 rounded">7 Títulos Mundiales</span>
+            </div>
+            <h4 class="text-xl font-bold text-white">Luis Alberto Marquina</h4>
+            <p class="text-slate-400 text-xs">Múltiple Campeón Mundial FVD e Internacional. Uno de los estrategas más condecorados de la historia del dominó venezolano.</p>
+          </div>
+
+          <!-- Carlos Marquina -->
+          <div class="bg-slate-900/90 border border-amber-500/30 p-5 rounded-2xl space-y-3">
+            <div class="flex justify-between items-start">
+              <span class="text-3xl">🥇</span>
+              <span class="bg-amber-500/20 text-amber-300 text-xs font-mono font-bold px-2 py-1 rounded">6 Títulos Mundiales</span>
+            </div>
+            <h4 class="text-xl font-bold text-white">Carlos Marquina</h4>
+            <p class="text-slate-400 text-xs">6 veces Campeón Mundial. Maestro en el cálculo de cierres tácticos y lectura rápida de mesa.</p>
+          </div>
+
+          <!-- Pascual Darbisi -->
+          <div class="bg-slate-900/90 border border-amber-500/30 p-5 rounded-2xl space-y-3">
+            <div class="flex justify-between items-start">
+              <span class="text-3xl">🏆</span>
+              <span class="bg-amber-500/20 text-amber-300 text-xs font-mono font-bold px-2 py-1 rounded">Atleta de Élite</span>
+            </div>
+            <h4 class="text-xl font-bold text-white">Pascual Darbisi</h4>
+            <p class="text-slate-400 text-xs">Pilar fundamental del Team Miranda, Campeón Nacional y destacado competidor en torneos continentales.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- BUSCADOR / OTROS CAMPEONES MUNDIALES -->
+      <div class="space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <h3 class="text-xl font-bold text-white">Otras Leyendas del Dominó Mundial</h3>
+          <input type="text" id="champion-search" onkeyup="filterChampions()" placeholder="Buscar por nombre o país..." class="bg-slate-900 border border-slate-700 text-slate-100 text-sm rounded-xl px-4 py-2.5 w-full sm:w-72 focus:outline-none focus:border-amber-400">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="champions-grid">
+          
+          <!-- Joaquín Martínez (Dominicano - 12 Mundiales) -->
+          <div class="champion-card bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-2xl">🇩🇴</span>
+              <span class="bg-emerald-500/20 text-emerald-400 text-xs font-bold px-2.5 py-1 rounded-full font-mono">12 Mundiales</span>
+            </div>
+            <h4 class="text-lg font-bold text-white">Joaquín Martínez</h4>
+            <p class="text-xs text-slate-400">República Dominicana</p>
+            <p class="text-xs text-slate-300 pt-2 border-t border-slate-800">El máximo ganador de campeonatos mundiales individuales y en parejas en la historia del juego.</p>
+          </div>
+
+          <!-- Johan Navas (Venezolano) -->
+          <div class="champion-card bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-2xl">🇻🇪</span>
+              <span class="bg-emerald-500/20 text-emerald-400 text-xs font-bold px-2.5 py-1 rounded-full font-mono">Campeón Mundial</span>
+            </div>
+            <h4 class="text-lg font-bold text-white">Johan Navas</h4>
+            <p class="text-xs text-slate-400">Venezuela</p>
+            <p class="text-xs text-slate-300 pt-2 border-t border-slate-800">Referente indiscutible de la selección nacional venezolana con victorias en torneos de la FID.</p>
+          </div>
+
+          <!-- Judazmin Mata -->
+          <div class="champion-card bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-2xl">🇻🇪</span>
+              <span class="bg-emerald-500/20 text-emerald-400 text-xs font-bold px-2.5 py-1 rounded-full font-mono">Campeona Mundial</span>
+            </div>
+            <h4 class="text-lg font-bold text-white">Judazmin Mata</h4>
+            <p class="text-xs text-slate-400">Venezuela</p>
+            <p class="text-xs text-slate-300 pt-2 border-t border-slate-800">Destacada campeona mundial en categoría femenina individual y por equipos.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CATALOGO 5: CLASES ONLINE & ADRIÁN PANTALEÓN -->
+    <section id="tab-clases" class="tab-content hidden space-y-12">
+      <div class="border-l-4 border-amber-500 pl-4">
+        <h2 class="text-3xl font-extrabold text-white">5. Clases Online con Adrián Pantaleón</h2>
+        <p class="text-slate-400 mt-1">Programa de entrenamiento estructurado en 5 Niveles para dominar el dominó competitivo.</p>
+      </div>
+
+      <!-- PERFIL DEL ENTRENADOR -->
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-4 flex flex-col items-center text-center space-y-4">
+          <div class="w-32 h-32 bg-gradient-to-tr from-amber-500 to-emerald-400 rounded-full flex items-center justify-center text-slate-950 font-black text-4xl shadow-xl shadow-amber-500/20 border-4 border-slate-900">
+            AP
+          </div>
+          <div>
+            <h3 class="text-2xl font-black text-white">Adrián Pantaleón</h3>
+            <p class="text-amber-400 text-sm font-semibold">Entrenador Certificado de Dominó</p>
+            <p class="text-slate-400 text-xs mt-1">19 Años • Miembro del Team Miranda</p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-8 space-y-4">
+          <h4 class="text-xl font-bold text-white">Trayectoria Deportiva Nacional</h4>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-slate-950/80 p-4 rounded-xl border border-emerald-500/30">
+              <div class="text-emerald-400 font-bold text-sm mb-1"><i class="fa-solid fa-trophy mr-2"></i>Campeón Nacional Sub-15</div>
+              <p class="text-slate-300 text-xs">Valencia, Venezuela (2021). Logro histórico invicto ganando las <strong class="text-white">7 partidas disputadas (7/7)</strong>.</p>
+            </div>
+
+            <div class="bg-slate-950/80 p-4 rounded-xl border border-amber-500/30">
+              <div class="text-amber-400 font-bold text-sm mb-1"><i class="fa-solid fa-medal mr-2"></i>Campeón Nacional Sub-18</div>
+              <p class="text-slate-300 text-xs">Maracay, Venezuela (2022). Dominio de torneo con victoria en <strong class="text-white">6 de 7 partidas disputadas</strong>.</p>
+            </div>
+          </div>
+
+          <p class="text-slate-300 text-sm leading-relaxed pt-2">
+            "Mi objetivo como entrenador es transmitir las metodologías modernas de lectura de mesa, teoría de la probabilidad y la sincronización tácita entre parejas para convertir apasionados del juego en atletas de alto rendimiento."
+          </p>
+        </div>
+
+      </div>
+
+      <!-- LOS 5 NIVELES DEL CURSO ONLINE -->
+      <div class="space-y-6">
+        <h3 class="text-2xl font-bold text-white text-center">Plan de Estudio: Los 5 Niveles del Curso</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- NIVEL 1 -->
+          <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-3 relative overflow-hidden">
+            <span class="absolute top-3 right-4 font-mono text-3xl font-black text-slate-800">N1</span>
+            <span class="bg-emerald-500/20 text-emerald-400 text-xs font-bold px-2.5 py-1 rounded-full uppercase">Nivel 1</span>
+            <h4 class="text-lg font-bold text-white">Fundamentos y Reglamento FVD</h4>
+            <p class="text-slate-400 text-xs">Reglamento oficial de la Federación Venezolana de Dominó, sorteo de salida, etiquetado de fichas y vocabulario técnico.</p>
+          </div>
+
+          <!-- NIVEL 2 -->
+          <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-3 relative overflow-hidden">
+            <span class="absolute top-3 right-4 font-mono text-3xl font-black text-slate-800">N2</span>
+            <span class="bg-emerald-500/20 text-emerald-400 text-xs font-bold px-2.5 py-1 rounded-full uppercase">Nivel 2</span>
+            <h4 class="text-lg font-bold text-white">Lectura Inicial y Señales Internas</h4>
+            <p class="text-slate-400 text-xs">Cómo interpretar la primera salida, descifrar los fallos de los rivales y reconocer la mano del compañero.</p>
+          </div>
+
+          <!-- NIVEL 3 -->
+          <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-3 relative overflow-hidden">
+            <span class="absolute top-3 right-4 font-mono text-3xl font-black text-slate-800">N3</span>
+            <span class="bg-amber-500/20 text-amber-400 text-xs font-bold px-2.5 py-1 rounded-full uppercase">Nivel 3</span>
+            <h4 class="text-lg font-bold text-white">Cálculo de Probabilidades</h4>
+            <p class="text-slate-400 text-xs">Conteo mental de fichas restantes por número, estimación de probabilidad de mano y control de palos.</p>
+          </div>
+
+          <!-- NIVEL 4 -->
+          <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-3 relative overflow-hidden">
+            <span class="absolute top-3 right-4 font-mono text-3xl font-black text-slate-800">N4</span>
+            <span class="bg-amber-500/20 text-amber-400 text-xs font-bold px-2.5 py-1 rounded-full uppercase">Nivel 4</span>
+            <h4 class="text-lg font-bold text-white">Estrategia de Tranque y Cierre</h4>
+            <p class="text-slate-400 text-xs">Cuándo y cómo provocar o evitar un tranque. Cálculo preciso de puntos acumulados antes de cerrar la partida.</p>
+          </div>
+
+          <!-- NIVEL 5 -->
+          <div class="bg-slate-900 border border-amber-500/50 p-6 rounded-2xl space-y-3 relative overflow-hidden md:col-span-2 lg:col-span-1">
+            <span class="absolute top-3 right-4 font-mono text-3xl font-black text-amber-500/20">N5</span>
+            <span class="bg-amber-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-full uppercase">Nivel 5 (Maestría)</span>
+            <h4 class="text-lg font-bold text-white">Élite de Competición</h4>
+            <p class="text-slate-400 text-xs">Psicología de torneo, gestión de presión, simulación de partidas reales con el Team Miranda y preparación para campeonatos.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FORMULARIO & DATOS DIRECTOS DE CONTACTO -->
+      <div class="bg-gradient-to-r from-slate-900 via-amber-950/20 to-slate-900 border border-slate-800 p-6 md:p-8 rounded-3xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <div class="space-y-4">
+            <h3 class="text-2xl font-bold text-white">Inscríbete a las Clases Online</h3>
+            <p class="text-slate-300 text-sm">Contáctame directamente por WhatsApp o Correo Electrónico para coordinar horarios y evaluación de nivel inicial.</p>
+            
+            <div class="space-y-3 pt-2">
+              <a href="https://wa.me/584143724113" target="_blank" class="flex items-center space-x-3 bg-emerald-500/10 border border-emerald-500/30 p-3.5 rounded-xl hover:bg-emerald-500/20 transition text-emerald-400 font-bold">
+                <i class="fa-brands fa-whatsapp text-2xl"></i>
+                <span>WhatsApp Directo: 0414-3724113</span>
+              </a>
+
+              <a href="mailto:adrianpantaleon206@gmail.com" class="flex items-center space-x-3 bg-amber-500/10 border border-amber-500/30 p-3.5 rounded-xl hover:bg-amber-500/20 transition text-amber-400 font-bold">
+                <i class="fa-solid fa-envelope text-2xl"></i>
+                <span>adrianpantaleon206@gmail.com</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Formulario Directo -->
+          <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-400 uppercase mb-1">Nombre Completo</label>
+              <input type="text" required placeholder="Tu nombre" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-amber-400">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-400 uppercase mb-1">Tu Teléfono o WhatsApp</label>
+              <input type="tel" required placeholder="Ej: +58 412..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-amber-400">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-400 uppercase mb-1">Nivel de Interés</label>
+              <select class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-300 focus:outline-none focus:border-amber-400">
+                <option>Nivel 1: Principiante / Reglamento</option>
+                <option>Nivel 2: Intermedio / Estrategia de Pareja</option>
+                <option>Nivel 3: Avanzado / Conteo de Probabilidades</option>
+                <option>Nivel 4: Experto / Tranque y Cierre</option>
+                <option>Nivel 5: Élite / Competición de Torneo</option>
+              </select>
+            </div>
+
+            <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-black py-3 rounded-xl transition shadow-lg shadow-amber-500/20 uppercase text-xs tracking-wider">
+              Solicitar Cupo de Clase
+            </button>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL: ANOTADOR DIGITAL DE PUNTOS -->
+  <div id="score-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700 w-full max-w-md rounded-2xl p-6 space-y-6 relative">
+      <button onclick="toggleModal('score-calculator')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <h3 class="text-xl font-bold text-white flex items-center">
+        <i class="fa-solid fa-calculator text-amber-400 mr-2"></i> Anotador de Partidas (A 200 Pts)
+      </h3>
+
+      <div class="grid grid-cols-2 gap-4 text-center">
+        <!-- Pareja A -->
+        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+          <h4 class="text-xs font-bold text-slate-400 uppercase">Pareja A</h4>
+          <p id="score-a" class="text-4xl font-mono font-bold text-amber-400 my-2">0</p>
+          <div class="flex space-x-1 justify-center">
+            <button onclick="addScore('a', 10)" class="bg-slate-800 hover:bg-slate-700 text-xs px-2 py-1 rounded">+10</button>
+            <button onclick="addScore('a', 25)" class="bg-slate-800 hover:bg-slate-700 text-xs px-2 py-1 rounded">+25</button>
+          </div>
+        </div>
+
+        <!-- Pareja B -->
+        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+          <h4 class="text-xs font-bold text-slate-400 uppercase">Pareja B</h4>
+          <p id="score-b" class="text-4xl font-mono font-bold text-cyan-400 my-2">0</p>
+          <div class="flex space-x-1 justify-center">
+            <button onclick="addScore('b', 10)" class="bg-slate-800 hover:bg-slate-700 text-xs px-2 py-1 rounded">+10</button>
+            <button onclick="addScore('b', 25)" class="bg-slate-800 hover:bg-slate-700 text-xs px-2 py-1 rounded">+25</button>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="resetScores()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs py-2 rounded-xl transition">
+        Reiniciar Marcador
+      </button>
+    </div>
+  </div>
+
+  <!-- PIE DE PÁGINA (FOOTER) -->
+  <footer class="bg-slate-950 border-t border-slate-800 py-10 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-center">
+      
+      <div class="flex justify-center space-x-6 text-xl text-slate-400">
+        <a href="https://wa.me/584143724113" target="_blank" class="hover:text-emerald-400 transition"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="mailto:adrianpantaleon206@gmail.com" class="hover:text-amber-400 transition"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+
+      <div class="space-y-1">
+        <p class="text-lg font-bold text-amber-400">Desarrollado por Adrian Pantaleon</p>
+        <p class="text-xs text-slate-400 font-mono">Entrenador Certificado & Campeón Nacional Sub-15 / Sub-18 • Team Miranda</p>
+        <p class="text-xs text-slate-400 font-mono">Contacto: 0414-3724113 | adrianpantaleon206@gmail.com</p>
+      </div>
+
+      <p class="text-xs text-slate-400">
+        &copy; Domino Elite. Página web oficial sobre estrategia y aprendizaje del dominó.
+      </p>
+
+    </div>
+  </footer>
+
+  <!-- ARCHIVO JAVASCRIPT EXTERNO -->
+  <script src="script.js"></script>
+</body>
+</html>
